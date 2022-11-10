@@ -8,6 +8,7 @@ public class Book extends Item {
 	public Book(String author, String title) {
 		super(title);
 		this.author = author;
+                
 	}
 
 	public String getAuthor() {
@@ -23,5 +24,8 @@ public class Book extends Item {
 		return "Book{" + super.toString() + ", author=" + author + '}';
 	}
 	
-	
+	public void accept(ItemVisitor v) {
+		// 2° Dispatch : en fonction du type statique de this (Item)
+		v.visit(this);
+	}
 }
